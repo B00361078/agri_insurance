@@ -3,15 +3,19 @@ package uni_api;
 import business.Zones;
 
 public class BarleyQte extends Quote {
+	
+	private String zone;
+	private double calcPremium;
 
-	public BarleyQte(String area) {
-		String checkZone = new Zones().zoneChecker(area);
-		System.out.println("this is the zone" + checkZone);
+	public BarleyQte(String council, int hectares, int vph) {
+		 zone = new Zones().zoneChecker(council);
+		 calcPremium = RatingEngine.getPremium(zone, hectares, vph);
 	}
 
 	@Override
 	public void generateQuote() {
-		premium = RatingEngine.getPremium();
-		qteNumber = QteNumberGenerator.getQteNumber();//
+		premium = this.calcPremium;
+		qteNumber = QteNumberGenerator.getQteNumber();
+		status = "ok";
 	}
 }

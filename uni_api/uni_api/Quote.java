@@ -2,17 +2,9 @@ package uni_api;
 
 public abstract class Quote {
 	
-	protected int premium;
+	protected double premium;
 	protected String qteNumber;
-	protected String zone;
-	
-	public int getPremium() {
-		return premium;
-	}
-	
-	public String getQteNumber() {
-		return qteNumber;
-	}
+	protected String status;
 	
 	public Quote() {
 		this.generateQuote();
