@@ -3,6 +3,7 @@ package business;
 import java.util.Arrays;
 import java.util.List;
 
+//zone1 to zone3 could be declared as const, then zoneChecker could be a static method.
 public class Zones {
 	
 	String [] zone1 = {"Inverclyde", "Renfrewshire", "West Dunbartonshire",  "East Dunbartonshire", 
@@ -13,6 +14,7 @@ public class Zones {
 				"South Lanarkshire", "Scottish Borders"};
 
 	String [] zone3 = {"Orkney", "Shetland"};
+	
 	
 	public String zoneChecker(String area) {
 		List<String> z1 = Arrays.asList(zone1);
