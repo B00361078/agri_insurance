@@ -2,20 +2,46 @@ package uni_api;
 
 import business.Zones;
 
-public class BarleyQte extends Quote {
+public class BarleyQte extends AgriQuote {
 	
-	private String zone;
-	private double calcPremium;
-
 	public BarleyQte(String council, int hectares, int vph) {
-		 zone = new Zones().zoneChecker(council);
-		 calcPremium = RatingEngine.getPremium(zone, hectares, vph);
+		//setting AgriQuote variables here
+		super(council, hectares, vph);
+	}
+	
+	private String checkZone(String council) {
+		new Zones();
+		zone = Zones.zoneChecker(council);
+			if (zone != null) {
+				setZone(zone);
+				return zone;
+			}
+			else {
+				setZone("invalid");
+				return zone;
+			}
+	}
+	
+	private double calculatePrice (String zone, int hectares, int vph) {
+			if (getZone() != null) {
+				premium = RatingEngine.getPremium(zone, hectares, vph);
+				setPremium(premium);
+			}
+			else {
+				premium = 0;
+				setPremium(premium);
+			}
+		return premium;	
 	}
 
 	@Override
 	public void generateQuote() {
-		premium = this.calcPremium;
-		qteNumber = QteNumberGenerator.getQteNumber();
-		status = "ok";
+		// override method now doing things
+		zone = checkZone(council);
+		System.out.println("this is the zone   " + zone);
+		calculatePrice (zone, hectares, vph);
+		System.out.println("this is the price   " + getPremium());
+		
 	}
 }
+
