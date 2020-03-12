@@ -1,8 +1,8 @@
 package uni_api;
 
-public class QuoteFactory {
+public class AgriInsuranceFactory {
 
-	public static Quote generateQuote(String crop, String council, int hectares, int vph) {
+	public static AgriQuote createNewQuote(String crop, String council, int hectares, int vph) {
 		switch(crop) {
 		case "Barley": {
 			return new BarleyQte(council, hectares, vph);
