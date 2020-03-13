@@ -72,9 +72,9 @@ public abstract class AgriQuote {
 		this.council = council;
 		this.hectares = hectares;
 		this.vph = vph;
-		this.generateQuote();
+		this.makeQuote();
 	}
 	// abstract method will be instantiates by lower level classes
-	public abstract void generateQuote();
+	public abstract void makeQuote();
 
 }
