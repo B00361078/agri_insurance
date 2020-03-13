@@ -9,7 +9,7 @@ public class RaspberryQte extends AgriQuote {
 	}
 
 	@Override
-	public void generateQuote() {
+	public void makeQuote() {
 		
 	}
 

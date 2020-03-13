@@ -10,7 +10,6 @@ public class BarleyQte extends AgriQuote {
 	}
 	
 	private String checkZone(String council) {
-		new Zones();
 		zone = Zones.zoneChecker(council);
 			if (zone != null) {
 				setZone(zone);
@@ -35,13 +34,10 @@ public class BarleyQte extends AgriQuote {
 	}
 
 	@Override
-	public void generateQuote() {
+	public void makeQuote() {
 		// override method now doing things
 		zone = checkZone(council);
-		System.out.println("this is the zone   " + zone);
 		calculatePrice (zone, hectares, vph);
-		System.out.println("this is the price   " + getPremium());
-		
 	}
 }
 

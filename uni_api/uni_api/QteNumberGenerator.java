@@ -11,5 +11,4 @@ public class QteNumberGenerator {
 		String qteNumber = ("QTE" + numString);
 		return qteNumber;
 	}
-
 }
