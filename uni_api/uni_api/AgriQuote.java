@@ -2,7 +2,9 @@ package uni_api;
 
 import status.AcceptedQuoteStatus;
 import status.QuoteStatus;
-import status.RejectedQuoteStatus;
+import status.ReferredQuoteStatus;
+import status.DeclinedQuoteStatus;
+import status.PendingQuoteStatus;
 import status.SavedQuoteStatus;
 
 public abstract class AgriQuote {
@@ -11,9 +13,6 @@ public abstract class AgriQuote {
 	
 	protected double premium;
 	protected String qteNumber;
-	protected QuoteStatus accepted; //types of status using state design pattern
-	protected QuoteStatus saved;
-	protected QuoteStatus rejected;
 	protected QuoteStatus currentStatus;
 	protected String council;
 	protected int hectares;
@@ -72,10 +71,7 @@ public abstract class AgriQuote {
 		this.council = council;
 		this.hectares = hectares;
 		this.vph = vph;
-		this.currentStatus = new SavedQuoteStatus(this);// set current status to saved
-		this.accepted = new AcceptedQuoteStatus(this);
-		this.rejected = new RejectedQuoteStatus(this);
-		this.saved = new SavedQuoteStatus(this);
+		this.currentStatus = new PendingQuoteStatus(this);// set current status to saved
 		this.makeQuote();
 	}
 	
@@ -92,19 +88,23 @@ public abstract class AgriQuote {
 	}
 	
 	public void rejectQuote() {
-		currentStatus.rejectQuote();
+		currentStatus.declineQuote();
 	}
 	public void saveQuote() {
 		currentStatus.saveQuote();
 	}
+	
 	public QuoteStatus getAcceptedState() {
-		return accepted;
+		return new AcceptedQuoteStatus(this);
 	}
 	public QuoteStatus getRejectedState() {
-		return rejected;
+		return new DeclinedQuoteStatus(this);
 	}
 	public QuoteStatus getSavedState() {
-		return saved;
+		return new SavedQuoteStatus(this);
+	}
+	public QuoteStatus getReferredState() {
+		return new ReferredQuoteStatus(this);
 	}
 	// abstract method will be instantiates by lower level classes
 	public abstract void makeQuote();

@@ -17,7 +17,7 @@ AgriQuote quote;
 	}
 	
 	@Override
-	public void rejectQuote() {
+	public void declineQuote() {
 		quote.setStatus(quote.getRejectedState());
 		System.out.println("Your quote is rejected");	
 	}
@@ -25,6 +25,13 @@ AgriQuote quote;
 	@Override
 	public void saveQuote() {
 		System.out.println("your quoute is already saved");
+	}
+
+	@Override
+	public void referQuote() {
+		quote.setStatus(quote.getReferredState());
+		System.out.println("Your quote has been referred");
+		
 	}
 
 }
