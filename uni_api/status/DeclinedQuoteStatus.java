@@ -1,5 +1,4 @@
 package status;
-
 import uni_api.AgriQuote;
 import users.User;
 

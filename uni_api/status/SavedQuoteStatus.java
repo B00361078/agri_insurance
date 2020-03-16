@@ -14,9 +14,6 @@ AgriQuote quote;
 
 	@Override
 	public void acceptQuote(User user) throws PermissionException {
-		if (user.getPermLevel() == 1) {
-			throw new PermissionException("you do not have the permission to save a quote");
-		}
 		quote.setStatus(quote.getAcceptedState());
 		System.out.println("Your quote is accepted");
 	}

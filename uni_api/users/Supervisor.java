@@ -1,13 +1,13 @@
-package User;
+package users;
 
-public class SupervisorManager {
+public class Supervisor {
 
-	public SupervisorManager() {
+	public Supervisor() {
 		super();
+		// TODO Auto-generated constructor stub
 		PermissionsManager permManager = new PermissionsManager();
 		Object myPerms = permManager.checkPermissions(this);
 		System.out.print(myPerms);
-		// TODO Auto-generated constructor stub
 	}
 	
 }
