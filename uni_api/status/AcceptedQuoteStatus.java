@@ -1,6 +1,9 @@
 package status;
 
+import exceptions.ActionException;
+import exceptions.PermissionException;
 import uni_api.AgriQuote;
+import users.User;
 
 public class AcceptedQuoteStatus implements QuoteStatus {
 	
@@ -11,26 +14,24 @@ public class AcceptedQuoteStatus implements QuoteStatus {
 	}
 
 	@Override
-	public void acceptQuote() {
-		quote.setStatus(quote.getAcceptedState());
-		System.out.println("Your quote is already accepted");
+	public void acceptQuote(User user) throws ActionException {
+			throw new ActionException("you cannot perform that action");
 	}
 
 	@Override
-	public void declineQuote() {
-		quote.setStatus(quote.getRejectedState());
-		System.out.println("Your quote is rejected");
+	public void declineQuote(User user) {
+		quote.setStatus(quote.getDeclinedState());
+		System.out.println("Your quote is declined");
 	}
 
 	@Override
-	public void saveQuote() {
-		System.out.println("Your quote is already saved and accepted");
+	public void saveQuote(User user) throws ActionException {
+		throw new ActionException("you cannot perform that action");
 	}
 
 	@Override
-	public void referQuote() {
-		System.out.println("Your quote is already accepted, cannot refer");
-		
+	public void referQuote(User user) throws ActionException {
+		throw new ActionException("you cannot perform that action");		
 	}
 
 }
