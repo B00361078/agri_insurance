@@ -1,12 +1,16 @@
 package status;
 
+import exceptions.ActionException;
+import exceptions.PermissionException;
+import users.User;
+
 public interface QuoteStatus {
 	
-	public void acceptQuote();
+	public void acceptQuote(User user ) throws ActionException, PermissionException;
 
-	public void declineQuote();
+	public void declineQuote(User user) throws ActionException, PermissionException;
 	
-	public void saveQuote();
+	public void saveQuote(User user) throws ActionException, PermissionException;
 	
-	public void referQuote();
+	public void referQuote(User user)throws ActionException, PermissionException;
 }

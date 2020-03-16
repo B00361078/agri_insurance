@@ -1,11 +1,14 @@
 package uni_api;
 
+import exceptions.ActionException;
+import exceptions.PermissionException;
 import status.AcceptedQuoteStatus;
 import status.QuoteStatus;
 import status.ReferredQuoteStatus;
 import status.DeclinedQuoteStatus;
 import status.PendingQuoteStatus;
 import status.SavedQuoteStatus;
+import users.User;
 
 public abstract class AgriQuote {
 	
@@ -83,24 +86,24 @@ public abstract class AgriQuote {
 		return currentStatus;
 	}
 
-	public void acceptQuote() {
-		currentStatus.acceptQuote();
+	public void acceptQuote(User user) throws ActionException {
+		currentStatus.acceptQuote(user);
 	}
 	
-	public void declineQuote() {
-		currentStatus.declineQuote();
+	public void declineQuote(User user) throws ActionException {
+		currentStatus.declineQuote(user);
 	}
-	public void saveQuote() {
-		currentStatus.saveQuote();
+	public void saveQuote(User user) throws ActionException {
+		currentStatus.saveQuote(user);
 	}
-	public void referQuote() {
-		currentStatus.referQuote();
+	public void referQuote(User user) throws ActionException {
+		currentStatus.referQuote(user);
 	}
 	
 	public QuoteStatus getAcceptedState() {
 		return new AcceptedQuoteStatus(this);
 	}
-	public QuoteStatus getRejectedState() {
+	public QuoteStatus getDeclinedState() {
 		return new DeclinedQuoteStatus(this);
 	}
 	public QuoteStatus getSavedState() {

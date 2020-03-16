@@ -1,6 +1,7 @@
 package status;
 
 import uni_api.AgriQuote;
+import users.User;
 
 public class DeclinedQuoteStatus implements QuoteStatus {
 	
@@ -11,26 +12,25 @@ public class DeclinedQuoteStatus implements QuoteStatus {
 	}
 
 	@Override
-	public void acceptQuote() {
+	public void acceptQuote(User user) {
 		quote.setStatus(quote.getAcceptedState());
 		System.out.println("Your quote is accepted");
 	}
 
 	@Override
-	public void declineQuote() {
+	public void declineQuote(User user) {
 		System.out.println("Your quote is already rejected");// TODO Auto-generated method stub
 	}
 
 	@Override
-	public void saveQuote() {
+	public void saveQuote(User user) {
 		System.out.println("Your quote is already saved but rejected");
 	}
 
 	@Override
-	public void referQuote() {
+	public void referQuote(User user) {
 		quote.setStatus(quote.getReferredState());
 		System.out.println("Your quote has been referred");
 		
 	}
-
 }
