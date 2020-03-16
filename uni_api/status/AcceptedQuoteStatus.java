@@ -17,7 +17,7 @@ public class AcceptedQuoteStatus implements QuoteStatus {
 	}
 
 	@Override
-	public void rejectQuote() {
+	public void declineQuote() {
 		quote.setStatus(quote.getRejectedState());
 		System.out.println("Your quote is rejected");
 	}
@@ -25,6 +25,12 @@ public class AcceptedQuoteStatus implements QuoteStatus {
 	@Override
 	public void saveQuote() {
 		System.out.println("Your quote is already saved and accepted");
+	}
+
+	@Override
+	public void referQuote() {
+		System.out.println("Your quote is already accepted, cannot refer");
+		
 	}
 
 }

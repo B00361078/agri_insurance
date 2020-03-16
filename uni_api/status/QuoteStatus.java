@@ -4,7 +4,9 @@ public interface QuoteStatus {
 	
 	public void acceptQuote();
 
-	public void rejectQuote();
+	public void declineQuote();
 	
 	public void saveQuote();
+	
+	public void referQuote();
 }
