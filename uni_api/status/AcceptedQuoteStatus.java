@@ -5,6 +5,7 @@ import exceptions.PermissionException;
 import uni_api.AgriQuote;
 import users.User;
 
+
 public class AcceptedQuoteStatus implements QuoteStatus {
 	
 	AgriQuote quote;
