@@ -87,11 +87,14 @@ public abstract class AgriQuote {
 		currentStatus.acceptQuote();
 	}
 	
-	public void rejectQuote() {
+	public void declineQuote() {
 		currentStatus.declineQuote();
 	}
 	public void saveQuote() {
 		currentStatus.saveQuote();
+	}
+	public void referQuote() {
+		currentStatus.referQuote();
 	}
 	
 	public QuoteStatus getAcceptedState() {
