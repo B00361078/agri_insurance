@@ -1,5 +1,7 @@
 package users;
 
+import permissions.PermissionsManager;
+
 public class Broker extends User {
 
 	public Broker() {

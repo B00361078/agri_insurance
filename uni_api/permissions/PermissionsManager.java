@@ -1,4 +1,6 @@
-package users;
+package permissions;
+
+import users.Broker;
 
 public class PermissionsManager {
 		

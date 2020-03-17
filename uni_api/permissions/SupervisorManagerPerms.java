@@ -1,4 +1,4 @@
-package users;
+package permissions;
 
 public class SupervisorManagerPerms extends PermissionsManager {
 
