@@ -1,22 +1,23 @@
 package uni_api;
 
+import business.RiskData;
 import exceptions.PermissionException;
 import users.User;
 public class AgriInsuranceFactory {
 	
-	public static AgriQuote createNewQuote(User user, String crop, String council, int hectares, int vph) throws PermissionException {
-		switch(crop) {
+	public static AgriQuote createNewQuote(User user, RiskData riskdata) throws PermissionException {
+		switch(riskdata.crop) {
 		case "Barley": {
-			return new BarleyQte(council, hectares, vph);
+			return new BarleyQte(riskdata);
 			}
 		case "Raspberries": {
-			return new RaspberryQte(council, hectares, vph);
+			return new RaspberryQte(riskdata);
 			}
 		case "Winter Wheat": {
-			return new WheatQte(council, hectares, vph);
+			return new WheatQte(riskdata);
 			}
 		case "Strawberries": {
-			return new StrawberryQte(council, hectares, vph);
+			return new StrawberryQte(riskdata);
 			}
 		default:
 			return null;

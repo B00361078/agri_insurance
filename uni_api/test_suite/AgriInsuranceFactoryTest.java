@@ -3,6 +3,7 @@ package test_suite;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
+import business.RiskData;
 import exceptions.PermissionException;
 import uni_api.AgriInsuranceFactory;
 import uni_api.AgriQuote;
@@ -18,7 +19,8 @@ class AgriInsuranceFactoryTest {
 		int hectares = 10;
 		int vph = 100;
 		User user = new Broker();
-		AgriQuote newqte = AgriInsuranceFactory.createNewQuote(user , crop, council, hectares, vph);
+		RiskData riskdata = new RiskData(crop, council, hectares, vph);
+		AgriQuote newqte = AgriInsuranceFactory.createNewQuote(user , riskdata);
 		
 		
 		

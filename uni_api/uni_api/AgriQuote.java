@@ -1,5 +1,6 @@
 package uni_api;
 
+import business.RiskData;
 import exceptions.ActionException;import exceptions.PermissionException;
 import status.AcceptedQuoteStatus;
 import status.QuoteStatus;
@@ -20,6 +21,7 @@ public abstract class AgriQuote {
 	protected int hectares;
 	protected int vph;
 	protected String zone;
+	RiskData riskdata;
 	
 	public String getZone() {
 		return zone;
@@ -69,10 +71,8 @@ public abstract class AgriQuote {
 		this.qteNumber = qteNumber;
 	}
 	
-	public AgriQuote(String council, int hectares, int vph) {
-		this.council = council;
-		this.hectares = hectares;
-		this.vph = vph;
+	public AgriQuote(RiskData riskdata) {
+		this.riskdata = riskdata;
 		this.currentStatus = new PendingQuoteStatus(this);// set current status to saved
 		this.makeQuote();
 	}
