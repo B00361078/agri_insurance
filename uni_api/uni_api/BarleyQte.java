@@ -1,16 +1,17 @@
 package uni_api;
 
+import business.RiskData;
 import business.Zones;
 
 public class BarleyQte extends AgriQuote {
 	
-	public BarleyQte(String council, int hectares, int vph) {
-		//setting AgriQuote variables here
-		super(council, hectares, vph);
+	public BarleyQte(RiskData riskdata) {
+		//setting risk data for the quote, do check here to make sure valid
+		super(riskdata);
 	}
 	
-	private String checkZone(String council) {
-		zone = Zones.zoneChecker(council);
+	private String checkZone() {
+		zone = Zones.zoneChecker(riskdata.council);
 			if (zone != null) {
 				setZone(zone);
 				return zone;
@@ -21,9 +22,9 @@ public class BarleyQte extends AgriQuote {
 			}
 	}
 	
-	private double calculatePrice (String zone, int hectares, int vph) {
+	private double calculatePrice () {
 			if (getZone() != null) {
-				premium = RatingEngine.getPremium(zone, hectares, vph);
+				premium = RatingEngine.getPremium(zone, riskdata.hectares, riskdata.vph);
 				setPremium(premium);
 			}
 			else {
@@ -36,8 +37,8 @@ public class BarleyQte extends AgriQuote {
 	@Override
 	public void makeQuote() {
 		// override method now doing things
-		zone = checkZone(council);
-		calculatePrice (zone, hectares, vph);
+		zone = checkZone();
+		calculatePrice ();
 	}
 }
 
