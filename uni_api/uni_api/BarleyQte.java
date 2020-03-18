@@ -1,5 +1,6 @@
 package uni_api;
 
+import business.BusinessRules;
 import business.RiskData;
 import business.Zones;
 
@@ -10,35 +11,34 @@ public class BarleyQte extends AgriQuote {
 		super(riskdata);
 	}
 	
-	private String checkZone() {
+	private void checkDataValid() {
 		zone = Zones.zoneChecker(riskdata.council);
-			if (zone != null) {
-				setZone(zone);
-				return zone;
+			if (zone == null) {
+				isValid = false;
 			}
 			else {
-				setZone("invalid");
-				return zone;
+				businessRules = new BusinessRules(zone, riskdata.hectares, riskdata.vph, riskdata.crop);
+				isValid = BusinessRules.getDecision();
 			}
 	}
-	
+		
 	private double calculatePrice () {
-			if (getZone() != null) {
 				premium = RatingEngine.getPremium(zone, riskdata.hectares, riskdata.vph);
-				setPremium(premium);
-			}
-			else {
-				premium = 0;
-				setPremium(premium);
-			}
 		return premium;	
 	}
 
 	@Override
 	public void makeQuote() {
-		// override method now doing things
-		zone = checkZone();
-		calculatePrice ();
+		checkDataValid();
+		if (isValid == false) {
+			System.out.println("quote is invalid");
+		}
+		else {
+			System.out.println("quote is valid");
+			calculatePrice ();
+			new QteNumberGenerator();
+		}
+		
 	}
 }
 

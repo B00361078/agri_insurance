@@ -1,5 +1,8 @@
 package uni_api;
 
+import java.util.Map;
+
+import business.BusinessRules;
 import business.RiskData;
 import exceptions.ActionException;import exceptions.PermissionException;
 import status.AcceptedQuoteStatus;
@@ -17,11 +20,10 @@ public abstract class AgriQuote {
 	protected double premium;
 	protected String qteNumber;
 	protected QuoteStatus currentStatus;
-	protected String council;
-	protected int hectares;
-	protected int vph;
 	protected String zone;
 	RiskData riskdata;
+	BusinessRules businessRules;
+	boolean isValid;
 	
 	public String getZone() {
 		return zone;
@@ -29,30 +31,6 @@ public abstract class AgriQuote {
 
 	public void setZone(String zone) {
 		this.zone = zone;
-	}
-
-	public String getCouncil() {
-		return council;
-	}
-
-	public void setCouncil(String council) {
-		this.council = council;
-	}
-
-	public int getHectares() {
-		return hectares;
-	}
-
-	public void setHectares(int hectares) {
-		this.hectares = hectares;
-	}
-
-	public int getVph() {
-		return vph;
-	}
-
-	public void setVph(int vph) {
-		this.vph = vph;
 	}
 		
 	public double getPremium() {
@@ -85,7 +63,7 @@ public abstract class AgriQuote {
 		return currentStatus;
 	}
 
-	public void acceptQuote(User user) throws ActionException, PermissionException {
+	public void acceptQuote(User user) throws PermissionException, ActionException {
 		currentStatus.acceptQuote(user);
 	}
 	
