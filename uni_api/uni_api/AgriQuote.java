@@ -63,17 +63,17 @@ public abstract class AgriQuote {
 		return currentStatus;
 	}
 
-	public void acceptQuote(User user) throws PermissionException, ActionException {
+	public void acceptQuote(User user) throws Exception {
 		currentStatus.acceptQuote(user);
 	}
 	
-	public void declineQuote(User user) throws ActionException, PermissionException {
+	public void declineQuote(User user) throws Exception {
 		currentStatus.declineQuote(user);
 	}
-	public void saveQuote(User user) throws ActionException, PermissionException {
+	public void saveQuote(User user) throws Exception {
 		currentStatus.saveQuote(user);
 	}
-	public void referQuote(User user) throws ActionException, PermissionException {
+	public void referQuote(User user) throws Exception {
 		currentStatus.referQuote(user);
 	}
 	
