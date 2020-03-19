@@ -2,14 +2,11 @@ package users;
 
 import permissions.PermissionsManager;
 
-public class Supervisor {
+public class Supervisor extends User{
 
 	public Supervisor() {
 		super();
-		// TODO Auto-generated constructor stub
-		PermissionsManager permManager = new PermissionsManager();
-		Object myPerms = permManager.checkPermissions(this);
-		System.out.print(myPerms);
-	}
-	
+		setRole("Supervisor");
+		PermissionsManager.checkPermissions(this);
+	}	
 }

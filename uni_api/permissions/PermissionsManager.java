@@ -1,20 +1,25 @@
 package permissions;
 
-import users.Broker;
+import users.User;
+
+//this class holds method for checking permissions for each user, depending on their role
 
 public class PermissionsManager {
 		
-	public Object checkPermissions(Object obj) {
-		if (obj instanceof Broker) {
-			return new BrokerPerms();
+	public static User checkPermissions(User user) {
+		
+		if (user.getRole() == "Broker") {
+			user.setPermissionLevel(1);
 		}
-		else if (obj instanceof Broker) {
-			return new SupervisorPerms();
+		else if (user.getRole() == "Supervisor") {
+			user.setPermissionLevel(2);
 		}
-		else if (obj instanceof Broker) {
-				return new SupervisorManagerPerms();
+		else if (user.getRole() == "SupManager") {
+				user.setPermissionLevel(3);
 		}
-		else return null;
- }
-	
+		else if (user.getRole() == "SysAdmin") {
+				user.setPermissionLevel(4);	
+		}
+		return null;
+	}
 }

@@ -1,19 +1,25 @@
 package users;
 
-import java.util.ArrayList;
-
 public abstract class User {
 	
-protected ArrayList<String> MyPerms;
+	protected int permissionLevel;
+	protected String role;
 
-public ArrayList<String> getMyPerms() {
-	return MyPerms;
-}
+	public int getPermissionLevel() {
+		return permissionLevel;
+	}
 
-public void setMyPerms(ArrayList<String> myPerms) {
-	MyPerms = myPerms;
-}
-    
+	public void setPermissionLevel(int permissionLevel) {
+		this.permissionLevel = permissionLevel;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}  
 }
 
 
