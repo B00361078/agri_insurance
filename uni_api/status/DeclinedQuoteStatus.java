@@ -26,7 +26,7 @@ public class DeclinedQuoteStatus implements QuoteStatus {
 	}
 
 	@Override
-	public void saveQuote(User user) throws ActionException {
+	public void saveQuote(User user) throws Exception {
 		throw new ActionException("your quote is already saved");
 	}
 
