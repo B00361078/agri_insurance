@@ -1,5 +1,6 @@
 package status;
 
+import exceptions.ActionException;
 import exceptions.PermissionException;
 import uni_api.AgriQuote;
 import users.User;
@@ -14,26 +15,30 @@ AgriQuote quote;
 
 	@Override
 	public void acceptQuote(User user) throws PermissionException {
+		if (!(user.getPermissionLevel() > 1)) {
+			throw new PermissionException("you do not have permission to perform that action");
+		}
 		quote.setStatus(quote.getAcceptedState());
-		System.out.println("Your quote is accepted");
 	}
 	
 	@Override
-	public void declineQuote(User user) {
-		quote.setStatus(quote.getDeclinedState());
-		System.out.println("Your quote is rejected");	
+	public void declineQuote(User user) throws Exception {
+		if (!(user.getPermissionLevel() > 1)) {
+			throw new PermissionException("you do not have permission to perform that action");
+		}
+		quote.setStatus(quote.getDeclinedState());	
 	}
 
 	@Override
-	public void saveQuote(User user) {
-		System.out.println("your quoute is already saved");
+	public void saveQuote(User user) throws Exception {
+		throw new ActionException("your quote is already saved");
 	}
 
 	@Override
-	public void referQuote(User user) {
-		quote.setStatus(quote.getReferredState());
-		System.out.println("Your quote has been referred");
-		
+	public void referQuote(User user) throws Exception {
+		if (!(user.getPermissionLevel() > 1)) {
+			throw new PermissionException("you do not have permission to perform that action");
+		}
+		quote.setStatus(quote.getReferredState());	
 	}
-
 }
