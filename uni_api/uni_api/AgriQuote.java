@@ -1,10 +1,6 @@
 package uni_api;
 
-import java.util.Map;
-
-import business.BusinessRules;
 import business.RiskData;
-import exceptions.ActionException;import exceptions.PermissionException;
 import status.AcceptedQuoteStatus;
 import status.QuoteStatus;
 import status.ReferredQuoteStatus;
@@ -20,17 +16,29 @@ public abstract class AgriQuote {
 	protected double premium;
 	protected String qteNumber;
 	protected QuoteStatus currentStatus;
-	protected String zone;
-	RiskData riskdata;
-	BusinessRules businessRules;
-	boolean isValid;
+	protected RiskData riskdata;
+	protected int sumInsured;
 	
-	public String getZone() {
-		return zone;
+	public AgriQuote(RiskData riskdata) {
+		this.riskdata = riskdata;
+		this.currentStatus = new PendingQuoteStatus(this);// set current status to pending
+		this.makeQuote();
+	}
+	
+	public RiskData getRiskdata() {
+		return riskdata;
 	}
 
-	public void setZone(String zone) {
-		this.zone = zone;
+	public void setRiskdata(RiskData riskdata) {
+		this.riskdata = riskdata;
+	}
+
+	public int getSumInsured() {
+		return sumInsured;
+	}
+
+	public void setSumInsured(int sumInsured) {
+		this.sumInsured = sumInsured;
 	}
 		
 	public double getPremium() {
@@ -49,12 +57,6 @@ public abstract class AgriQuote {
 		this.qteNumber = qteNumber;
 	}
 	
-	public AgriQuote(RiskData riskdata) {
-		this.riskdata = riskdata;
-		this.currentStatus = new PendingQuoteStatus(this);// set current status to saved
-		this.makeQuote();
-	}
-	
 	public void setStatus(QuoteStatus currentStatus) {
 		this.currentStatus = currentStatus;
 	}
@@ -66,7 +68,6 @@ public abstract class AgriQuote {
 	public void acceptQuote(User user) throws Exception {
 		currentStatus.acceptQuote(user);
 	}
-	
 	public void declineQuote(User user) throws Exception {
 		currentStatus.declineQuote(user);
 	}

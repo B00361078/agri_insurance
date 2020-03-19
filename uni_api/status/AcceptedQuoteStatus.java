@@ -15,8 +15,8 @@ public class AcceptedQuoteStatus implements QuoteStatus {
 	}
 
 	@Override
-	public void acceptQuote(User user) throws ActionException {
-			throw new ActionException("you cannot perform that action");
+	public void acceptQuote(User user) throws Exception {
+			throw new ActionException("your quote is already accepted");
 	}
 
 	@Override
@@ -28,12 +28,12 @@ public class AcceptedQuoteStatus implements QuoteStatus {
 	}
 
 	@Override
-	public void saveQuote(User user) throws ActionException {
+	public void saveQuote(User user) throws Exception {
 		throw new ActionException("you cannot perform that action");
 	}
 
 	@Override
-	public void referQuote(User user) throws ActionException {
+	public void referQuote(User user) throws Exception {
 		throw new ActionException("you cannot perform that action");		
 	}
 
