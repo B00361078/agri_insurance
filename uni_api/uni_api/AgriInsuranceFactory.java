@@ -5,7 +5,7 @@ import exceptions.PermissionException;
 import users.User;
 public class AgriInsuranceFactory {
 	
-	public static AgriQuote createNewQuote(User user, RiskData riskdata) throws PermissionException {
+	public static AgriQuote createNewQuote(User user, RiskData riskdata) throws Exception {
 		switch(riskdata.crop) {
 		case "Barley": {
 			return new BarleyQte(riskdata);
