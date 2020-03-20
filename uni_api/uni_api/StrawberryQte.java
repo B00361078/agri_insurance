@@ -27,5 +27,5 @@ public class StrawberryQte extends AgriQuote {
 		calculatePrice();
 		QteNumberGenerator.getQteNumber();
 	}
-
 }
+

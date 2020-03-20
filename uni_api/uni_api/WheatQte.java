@@ -25,5 +25,5 @@ public class WheatQte extends AgriQuote {
 		calculatePrice();
 		QteNumberGenerator.getQteNumber();
 	}
-
+	
 }
