@@ -21,7 +21,7 @@ public class DataChecker {
 		this.isDataValid = isDataValid;
 	}
 
-	public DataChecker(RiskData riskdata) throws Exception {
+	public DataChecker(RiskData riskdata) throws InvalidDataException {
 		this.riskdata = riskdata;
 		checkZone();
 		checkCropValid();
@@ -29,7 +29,7 @@ public class DataChecker {
 	}
 	
 	
-	public void checkZone() throws Exception {
+	public void checkZone() throws InvalidDataException {
 		zone = Zones.zoneChecker(riskdata.council);
 		if (zone == null) {
 			setDataValid(false);
@@ -40,7 +40,7 @@ public class DataChecker {
 		}
 	}
 	
-	public void checkCropValid () throws Exception {
+	public void checkCropValid () throws InvalidDataException {
 		List<String> availableCrops = Arrays.asList(crops);
 		if(!(availableCrops.contains(riskdata.crop))) {
 			setDataValid(false);
@@ -51,7 +51,7 @@ public class DataChecker {
 		}
 	}
 	
-	public void checkBusinessRules() throws Exception {
+	public void checkBusinessRules() throws InvalidDataException {
 		new BusinessRules(zone, riskdata.hectares, riskdata.vph, riskdata.crop);
 		if (BusinessRules.getDecision()==false) {
 			setDataValid(false);
