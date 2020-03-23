@@ -1,5 +1,7 @@
 package com.agri.quote;
 
+import com.agri.business.QteNumberGenerator;
+import com.agri.business.RatingEngine;
 import com.agri.business.RiskData;
 
 public class BarleyQte extends AgriQuote {

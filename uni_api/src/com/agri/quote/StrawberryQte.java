@@ -1,14 +1,13 @@
 package com.agri.quote;
 
+import com.agri.business.QteNumberGenerator;
+import com.agri.business.RatingEngine;
 import com.agri.business.RiskData;
-import com.agri.business.Zones;
 
 public class StrawberryQte extends AgriQuote {
 	
 	public StrawberryQte(RiskData riskdata) {
 		super(riskdata);
-		//Santi: Wonderig what happens when wrog set of [council, hectares, vph] is sent to this consutructor
-		// will add in exception handling for invalid parameters
 	}
 	
 	private double calculatePrice () {

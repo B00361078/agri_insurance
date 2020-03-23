@@ -1,4 +1,4 @@
-package com.agri.quote;
+package com.agri.business;
 
 import java.security.SecureRandom;
 
