@@ -2,11 +2,13 @@ package com.agri.quote;
 
 import com.agri.business.DataChecker;
 import com.agri.business.RiskData;
+import com.agri.exceptions.InvalidDataException;
 import com.agri.exceptions.PermissionException;
 import com.agri.users.User;
+
 public class AgriInsuranceFactory {
 	
-	public static AgriQuote createNewQuote(User user, RiskData riskdata) throws Exception {
+	public static AgriQuote createNewQuote(User user, RiskData riskdata) throws PermissionException, InvalidDataException {
 		DataChecker check = new DataChecker(riskdata);
 		check.isDataValid(); //checking RiskData is valid before quoting
 		if (!(user.getPermissionLevel() >= 1)) { //check permission at earliest opportunity
@@ -29,5 +31,4 @@ public class AgriInsuranceFactory {
 			return null;
 		}
 	}
-
 }
