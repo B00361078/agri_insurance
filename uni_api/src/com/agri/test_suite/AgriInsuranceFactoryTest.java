@@ -19,6 +19,7 @@ class AgriInsuranceFactoryTest {
 		User user = new Broker();
 		RiskData riskdata = new RiskData(crop, council, hectares, vph);
 		AgriQuote newqte = AgriInsuranceFactory.createNewQuote(user , riskdata);
+		newqte.saveQuote(user);
 		
 		
 		
