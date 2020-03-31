@@ -13,12 +13,13 @@ public class BarleyQte extends AgriQuote {
 	}
 	
 	private double calculatePrice () {
-		premium = RatingEngine.getPremium();
+		premium = RatingEngine.getPremium(riskdata.crop, sumInsured);
 		return premium;
 	}
 	
 	private double calculateSI () {
 		sumInsured = riskdata.hectares * riskdata.vph;
+		System.out.println("this is it" + sumInsured);
 		return sumInsured;
 	}
 

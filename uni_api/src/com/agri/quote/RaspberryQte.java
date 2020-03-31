@@ -11,7 +11,7 @@ public class RaspberryQte extends AgriQuote {
 	}
 	
 	private double calculatePrice () {
-		premium = RatingEngine.getPremium();
+		premium = RatingEngine.getPremium(riskdata.crop, sumInsured);
 		return premium;
 	}
 	

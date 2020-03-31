@@ -1,14 +1,41 @@
 package com.agri.business;
 
-import java.util.Random;
+import java.text.DecimalFormat;
 
 public class RatingEngine {
-	
-	public static double getPremium() {
+
+	public static double getPremium(String crop, int SI) {
 		
-		//this is where the rating should be generated from Rating engine
-		Random premGenerator = new Random();
-		int premium = premGenerator.nextInt(10000);
-		return premium;
+		DecimalFormat decimal = new DecimalFormat("########0.00");
+		
+		double calc;
+		String value;
+		double premium;
+		
+		switch (crop) {
+			case "Barley":
+				calc = SI * 0.02;
+				value = decimal.format(calc);
+				premium = Double.parseDouble(value);
+				return premium;
+			case "Strawberries":
+				calc = SI * 0.07;
+				value = decimal.format(calc);
+				System.out.println(value);
+				premium = Double.parseDouble(value);
+				return premium;
+			case "Raspberries":
+				calc = SI * 0.19;
+				value = decimal.format(calc);
+				premium = Double.parseDouble(value);
+				return premium;
+			case "WinterWheat":
+				calc = SI * 0.11;
+				value = decimal.format(calc);
+				premium = Double.parseDouble(value);
+				return premium;
+			default:
+				return 0.00;
+		}
 	}
 }
