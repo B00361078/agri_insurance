@@ -1,25 +1,22 @@
 package com.agri.permissions;
 
-import com.agri.users.User;
-
 //this class holds method for checking permissions for each user, depending on their role
 
 public class PermissionsManager {
 		
-	public static User checkPermissions(User user) {
+	public static int checkPermissions(String role) {
 		
-		if (user.getRole() == "Broker") {
-			user.setPermissionLevel(1);
+		switch(role) {
+			case "Broker":
+				return 1;
+			case "Supervisor":
+				return 2;
+			case "SupManager":
+				return 3;
+			case "SysAdmin":
+				return 4;
+			default:
+				return 0;
 		}
-		else if (user.getRole() == "Supervisor") {
-			user.setPermissionLevel(2);
-		}
-		else if (user.getRole() == "SupManager") {
-				user.setPermissionLevel(3);
-		}
-		else if (user.getRole() == "SysAdmin") {
-				user.setPermissionLevel(4);	
-		}
-		return null;
 	}
 }

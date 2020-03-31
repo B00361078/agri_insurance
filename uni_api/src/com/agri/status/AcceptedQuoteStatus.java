@@ -21,7 +21,7 @@ public class AcceptedQuoteStatus implements QuoteStatus {
 
 	@Override
 	public void declineQuote(User user) throws Exception {
-		if (!(user.getPermissionLevel() > 1)) {
+		if (!(user.getPermissionsLevel() > 1)) {
 			throw new PermissionException("you do not have permission to perform that action");
 		}
 		quote.setStatus(quote.getDeclinedState());

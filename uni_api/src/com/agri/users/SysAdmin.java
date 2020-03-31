@@ -2,11 +2,18 @@ package com.agri.users;
 
 import com.agri.permissions.PermissionsManager;
 
-public class SysAdmin extends User {
+public class SysAdmin implements User {
 	
+	protected String role;
+	protected int permLevel;
+
 	public SysAdmin() {
-		super();
-		setRole("SysAdmin");
-		PermissionsManager.checkPermissions(this);
+		this.role = "SysAdmin";
+	}
+
+	@Override
+	public int getPermissionsLevel() {
+		permLevel = PermissionsManager.checkPermissions(role);
+		return permLevel;
 	}
 }

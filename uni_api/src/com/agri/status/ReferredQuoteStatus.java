@@ -15,7 +15,7 @@ AgriQuote quote;
 
 	@Override
 	public void acceptQuote(User user ) throws Exception {
-		if (!(user.getPermissionLevel() > 2)) {
+		if (!(user.getPermissionsLevel() > 2)) {
 			throw new PermissionException("you do not have permission to perform that action");
 		}
 		quote.setStatus(quote.getAcceptedState());
@@ -23,7 +23,7 @@ AgriQuote quote;
 
 	@Override
 	public void declineQuote(User user) throws Exception {
-		if (!(user.getPermissionLevel() > 2)) {
+		if (!(user.getPermissionsLevel() > 2)) {
 			throw new PermissionException("you do not have permission to perform that action");
 		}
 		quote.setStatus(quote.getDeclinedState());

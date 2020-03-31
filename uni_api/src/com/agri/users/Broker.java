@@ -2,11 +2,18 @@ package com.agri.users;
 
 import com.agri.permissions.PermissionsManager;
 
-public class Broker extends User {
+public class Broker implements User {
+	
+	protected String role;
+	protected int permLevel;
 
 	public Broker() {
-		super();
-		setRole("Broker");
-		PermissionsManager.checkPermissions(this);
+		this.role = "Broker";
+	}
+
+	@Override
+	public int getPermissionsLevel() {
+		permLevel = PermissionsManager.checkPermissions(role);
+		return permLevel;
 	}
 }
