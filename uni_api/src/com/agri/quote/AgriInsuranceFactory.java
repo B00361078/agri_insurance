@@ -11,7 +11,7 @@ public class AgriInsuranceFactory {
 	public static AgriQuote createNewQuote(User user, RiskData riskdata) throws PermissionException, InvalidDataException {
 		DataChecker check = new DataChecker(riskdata);
 		check.isDataValid(); //checking RiskData is valid before quoting
-		if (!(user.getPermissionLevel() >= 1)) { //check permission at earliest opportunity
+		if (!(user.getPermissionsLevel() >= 1)) { //check permission at earliest opportunity
 			throw new PermissionException("you do not have permission to quote");
 		}
 		switch(riskdata.crop) {
