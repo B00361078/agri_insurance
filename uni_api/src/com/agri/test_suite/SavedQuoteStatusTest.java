@@ -169,7 +169,7 @@ class SavedQuoteStatusTest {
 			try {
 				quote.saveQuote(user);
 				quote.acceptQuote(user);
-				quote.referQuote(user);
+				quote.saveQuote(user);
 			}
 			
 			catch(ActionException e) {
