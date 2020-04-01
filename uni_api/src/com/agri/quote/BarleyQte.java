@@ -19,7 +19,6 @@ public class BarleyQte extends AgriQuote {
 	
 	private double calculateSI () {
 		sumInsured = riskdata.hectares * riskdata.vph;
-		System.out.println("this is it" + sumInsured);
 		return sumInsured;
 	}
 

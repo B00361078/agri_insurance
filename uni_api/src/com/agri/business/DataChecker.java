@@ -9,11 +9,11 @@ public class DataChecker {
 	
 	protected RiskData riskdata;
 	protected String zone;
-	protected boolean isDataValid;
+	public boolean isDataValid;
 	
 	private final static String [] crops = {"Barley", "Raspberries", "WinterWheat", "Strawberries"};
 	
-	public boolean isDataValid() {
+	public boolean getDataValid() {
 		return isDataValid;
 	}
 

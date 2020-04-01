@@ -21,7 +21,6 @@ public class RatingEngine {
 			case "Strawberries":
 				calc = SI * 0.07;
 				value = decimal.format(calc);
-				System.out.println(value);
 				premium = Double.parseDouble(value);
 				return premium;
 			case "Raspberries":

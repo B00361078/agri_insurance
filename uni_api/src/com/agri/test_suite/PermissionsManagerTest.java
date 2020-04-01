@@ -51,5 +51,16 @@ class PermissionsManagerTest {
 		
 		assertEquals(expected, actual);
 	}
+	
+	@Test
+	//get default permission level
+	void defaultTest() {
+		String role = "default";
+		int expected = 0;
+		
+		int actual = PermissionsManager.checkPermissions(role);
+		
+		assertEquals(expected, actual);
+	}
 
 }
