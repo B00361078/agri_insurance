@@ -46,7 +46,7 @@ class ZonesTest {
 	}
 	
 	@Test
-	//Check if council does not exist returs null
+	//Check if council does not exist returns null
 	void noZoneTest( ) {
 		council = "Spain";
 		expected = null;

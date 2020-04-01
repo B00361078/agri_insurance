@@ -4,17 +4,16 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import com.agri.permissions.PermissionsManager;
+import com.agri.users.Broker;
 
 class BrokerPermTest {
 
 	@Test
 	//get Brokers Permission Level
 	void BrokerPermissiontest() {
-		String role = "Broker";
 		int expected = 1;
 		
-		int actual = PermissionsManager.checkPermissions(role);
+		int actual = new Broker().getPermissionsLevel();
 		
 		assertEquals(expected, actual);
 	}

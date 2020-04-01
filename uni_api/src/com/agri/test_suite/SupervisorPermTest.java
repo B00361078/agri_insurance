@@ -5,16 +5,16 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 import com.agri.permissions.PermissionsManager;
+import com.agri.users.Supervisor;
 
 class SupervisorPermTest {
 
 	@Test
 	//check Supervisor Permission Level
 	void supervisorPermissiontest() {
-		String role = "Supervisor";
 		int expected = 2;
 		
-		int actual = PermissionsManager.checkPermissions(role);
+		int actual = new Supervisor().getPermissionsLevel();
 		
 		assertEquals(expected, actual);
 	}
