@@ -9,7 +9,8 @@ import com.agri.business.RatingEngine;
 class RatingEngineTest {
 
 	@Test
-	void testBarleyPremium() {
+	//get premium for Barley (whole number SI)
+	void barleyPremiumtest1() {
 		String crop = "Barley";
 		int SI = 211;
 		new RatingEngine();
@@ -19,6 +20,18 @@ class RatingEngineTest {
 	}
 	
 	@Test
+	//get premium for Barley (whole number SI)
+	void barleyPremiumTest2() {
+		String crop = "Barley";
+		int SI = (int) 158.5;
+		new RatingEngine();
+		double actual = RatingEngine.getPremium(crop, SI);
+		double expected = 3.16;
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	//get premium for Strawberries
 	void testStrawberryPremium() {
 		String crop = "Strawberries";
 		int SI = 500;
