@@ -27,4 +27,24 @@ class RatingEngineTest {
 		double expected = 35.0;
 		assertEquals(expected, actual);
 	}
+	
+	@Test
+	void testRaspberryPremium() {
+		String crop = "Raspberries";
+		int SI = 600;
+		new RatingEngine();
+		double actual = RatingEngine.getPremium(crop, SI);
+		double expected = 114.0;
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	void testWheatPremium() {
+		String crop = "WinterWheat";
+		int SI = 850;
+		new RatingEngine();
+		double actual = RatingEngine.getPremium(crop, SI);
+		double expected = 93.5;
+		assertEquals(expected, actual);
+	}
 }
