@@ -20,8 +20,7 @@ class AcceptedQuoteStatusTest {
         int vph = 100;
        
        
-	@Test 
-	// Test Case for Accept Exception for Supervisor Manager
+	@Test // Supervisor Accepted Quote Exception Test
 	void SupAcceptedExceptionTest() throws Exception {
 		
         User user = new Supervisor();
@@ -41,8 +40,7 @@ class AcceptedQuoteStatusTest {
         }
 	}
 	
-	@Test
-	// Test Case for Decline Exception for Supervisor Manager
+	@Test // Supervisor Decline Quote Exception Test
 	void SupDeclinedExceptionTest() throws Exception {
 		
 		String actual; 
@@ -60,8 +58,8 @@ class AcceptedQuoteStatusTest {
         	assertTrue(actual.contains(expected));
 	}
 	
-	@Test
-	void SupSavedExceptionTest() throws Exception {
+	@Test // Supervisor Save Quote Exception Test
+	void SupSaveExceptionTest() throws Exception {
 			
 	     User user = new Supervisor();
 	     RiskData riskdata = new RiskData(crop, council, hectares, vph);
@@ -72,7 +70,6 @@ class AcceptedQuoteStatusTest {
 	        quote.saveQuote(user);
 			quote.acceptQuote(user);
 		    quote.saveQuote(user);
-		    fail();
 		    
 	        } 
 	        
@@ -81,7 +78,7 @@ class AcceptedQuoteStatusTest {
 	        }
 		}
 	
-	@Test
+	@Test // Supervisor Refer Quote Exception Test 
 	void SupReferExceptionTest() throws Exception {
 		
 		User user = new Supervisor();
@@ -93,7 +90,6 @@ class AcceptedQuoteStatusTest {
 	        quote.saveQuote(user);
 			quote.acceptQuote(user);
 		    quote.referQuote(user);
-		    fail();
 		    
 	        } 
 	        
@@ -102,7 +98,7 @@ class AcceptedQuoteStatusTest {
 	        }
 		}
 	
-	@Test 
+	@Test // Supervisor Manager Accept Quote Exception Test
 	void SupManAcceptExceptionTest() throws Exception {
 		User user = new SupervisorManager();
 		RiskData riskdata = new RiskData(crop, council, hectares, vph);
@@ -120,7 +116,7 @@ class AcceptedQuoteStatusTest {
 		
 	}
 	
-	@Test
+	@Test // Supervisor Manager Decline Quote Exception Test 
 	void SupManDeclineExceptionTest() throws Exception {
 		
 		String actual; 
@@ -138,7 +134,7 @@ class AcceptedQuoteStatusTest {
         	assertTrue(actual.contains(expected));
 		}
 	
-	@Test // Supervisor Manager Exception Test
+	@Test // Supervisor Manager Save Quote Exception Test 
 	void SupManSaveExceptionTest() throws Exception {
 		User user = new SupervisorManager();
 		RiskData riskdata = new RiskData(crop, council, hectares, vph);
@@ -156,7 +152,7 @@ class AcceptedQuoteStatusTest {
 			
 	}
 	
-	@Test // Supervisor Manager Exception Test 
+	@Test // Supervisor Manager Refer Quote Exception Test 
 	void SupManReferExceptionTest() throws Exception {
 		User user = new SupervisorManager();
 		RiskData riskdata = new RiskData(crop, council, hectares, vph);

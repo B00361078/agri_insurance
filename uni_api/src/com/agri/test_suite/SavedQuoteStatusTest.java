@@ -19,7 +19,7 @@ class SavedQuoteStatusTest {
 	    int hectares = 500;
 	    int vph = 100;
 	
-	@Test
+	@Test  // Supervisor Accept Quote Exception Test 
 	void SupAcceptExceptionTest() throws Exception {
 		
 		String actual; 
@@ -36,7 +36,7 @@ class SavedQuoteStatusTest {
         	assertTrue(actual.contains(expected));
 	}
 	
-	@Test
+	@Test  // Supervisor Decline Quote Exception Test 
 	void SupDeclineExceptionTest() throws Exception {
 		
 		String actual;
@@ -53,7 +53,7 @@ class SavedQuoteStatusTest {
     	assertTrue(actual.contains(expected));
 	}
 	
-	@Test
+	@Test // Supervisor Save Quote Exception Test 
 	void SupSaveExceptionTest() throws Exception {
 		User user = new Supervisor();
 		RiskData riskdata = new RiskData(crop, council, hectares, vph);
@@ -71,7 +71,7 @@ class SavedQuoteStatusTest {
 		
 	}
 		
-		@Test
+		@Test  // Supervisor Refer Quote Exception Test 
 		void SupReferExceptionTest() throws Exception {
 			User user = new Supervisor();
 			RiskData riskdata = new RiskData(crop, council, hectares, vph);
@@ -89,7 +89,7 @@ class SavedQuoteStatusTest {
 				
 		}
 		
-		@Test
+		@Test  // Supervisor Manager Accept Quote Exception Test 
 		void SupManAcceptExceptionTest() throws Exception {
 			
 			String actual; 
@@ -106,7 +106,7 @@ class SavedQuoteStatusTest {
 	        	assertTrue(actual.contains(expected));
 		}
 		
-		@Test
+		@Test  // Supervisor Manager Decline Quote Exception Test 
 		void SupManDeclineExceptionTest() throws Exception {
 			
 			String actual; 
@@ -123,7 +123,7 @@ class SavedQuoteStatusTest {
 	        	assertTrue(actual.contains(expected));
 		}
 		
-		@Test
+		@Test  // Supervisor Manager Decline Quote Exception Test 
 		void SupManSaveExceptionTest() throws Exception {
 			User user = new SupervisorManager();
 			RiskData riskdata = new RiskData(crop, council, hectares, vph);
@@ -141,7 +141,7 @@ class SavedQuoteStatusTest {
 				
 		}
 		
-		@Test
+		@Test  // Supervisor Manager Refer Quote Exception Test 
 		void SupManReferExceptionTest() throws Exception {
 			User user = new SupervisorManager();
 			RiskData riskdata = new RiskData(crop, council, hectares, vph);
@@ -160,7 +160,7 @@ class SavedQuoteStatusTest {
 		}
 		
 		
-		@Test
+		@Test  // Supervisor Manager Save Quote Exception Test 
 		void BrokerSaveExceptionTest() throws Exception {
 			User user = new SupervisorManager();
 			RiskData riskdata = new RiskData(crop, council, hectares, vph);
