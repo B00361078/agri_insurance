@@ -33,7 +33,6 @@ class AcceptedQuoteStatusTest {
         quote.saveQuote(user);
 		quote.acceptQuote(user);
 	    quote.acceptQuote(user);
-	    fail();
 	    
         } 
         
