@@ -10,7 +10,7 @@ public class BusinessRules {
 	private Map<String, Integer> currentRules;
 	private static boolean decision;
 	private Integer maxSI;
-
+	// hashmap for each zones business rules
 	protected static Map<String, Integer> zone1_maxSI = Map.ofEntries
 														(entry("Barley", 3000000), 
  														 entry("Wheat", 2000000),
@@ -27,7 +27,7 @@ public class BusinessRules {
 														 entry("Strawberries", 9000000),
 														 entry("Raspberries", 9000000)
 														);
-
+	// check each method and get decision
 	public BusinessRules (String zone, int hectares, int vph, String crop) {
 		decision = false;
 		setZoneBusinessRules(zone);
@@ -35,7 +35,7 @@ public class BusinessRules {
 		checkMaxSI(hectares, vph, crop);
 		checkSIValid(hectares, vph);
 	}
-
+	// check max SI for that zones rules
 	private void checkMaxSI(int hectares, int vph, String crop) {
 		Integer cropmaxSI = currentRules.get(crop);
 		if (cropmaxSI == null) {
@@ -44,7 +44,7 @@ public class BusinessRules {
 		else 
 			setMaxSI(cropmaxSI);
 	}
-	
+	// check sum insured is not greater than allowed
 	private void checkSIValid(int hectares, int vph) { 
 		int totalSI = hectares * vph;
 		if (totalSI > maxSI) {
@@ -53,7 +53,7 @@ public class BusinessRules {
 		else 
 			setDecision(true);
 	}
-
+	// set what rules will apply depending on the zone
 	public void setZoneBusinessRules(String zone) {
 		switch(zone) {
 		case "Zone1": {
@@ -72,7 +72,7 @@ public class BusinessRules {
 			setMaxHectare(2000);
 		}
 	}
-	
+	// check hectares do not exceed maximum allowed
 	public static void checkHectares(int hectares, int maxHectares) {
 		if (hectares > maxHectares ) {
 			setDecision(false);
@@ -81,7 +81,7 @@ public class BusinessRules {
 			setDecision(true);
 		}
 	}
-	
+	// setters and getters for variables
 	public void setCurrentRules(Map<String, Integer> currentRules) {
 		this.currentRules = currentRules;
 	}

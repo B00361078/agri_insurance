@@ -4,6 +4,8 @@ import com.agri.permissions.PermissionsManager;
 
 public class Default implements User {
 	
+	// implements user and gets permissions
+	
 	protected String role;
 	protected int permLevel;
 
