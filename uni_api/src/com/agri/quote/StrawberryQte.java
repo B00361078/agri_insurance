@@ -20,7 +20,7 @@ public class StrawberryQte extends AgriQuote {
 		setSumInsured(riskdata.hectares * riskdata.vph);
 		return sumInsured;
 	}
-	// overriden method to generate quote 
+	// overridden method to generate quote 
 	@Override
 	public void makeQuote() {
 		calculateSI();

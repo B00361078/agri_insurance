@@ -9,7 +9,7 @@ public class SavedQuoteStatus implements QuoteStatus {
 	
 	// class for saved quote status, determines what each action can do on quote
 
-AgriQuote quote;
+	AgriQuote quote;
 	
 	public SavedQuoteStatus(AgriQuote quote) {
 		this.quote = quote;

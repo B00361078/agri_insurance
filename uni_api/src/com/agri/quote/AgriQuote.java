@@ -90,7 +90,7 @@ public abstract class AgriQuote {
 	public QuoteStatus getReferredState() {
 		return new ReferredQuoteStatus(this);
 	}
-	// abstract method will be instantiates by lower level classes
+	// abstract method will be instantiated by lower level classes
 	public abstract void makeQuote();
 
 }
