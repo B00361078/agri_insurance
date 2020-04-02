@@ -9,6 +9,7 @@ import com.agri.exceptions.ActionException;
 import com.agri.exceptions.PermissionException;
 import com.agri.quote.AgriInsuranceFactory;
 import com.agri.quote.AgriQuote;
+import com.agri.users.Broker;
 import com.agri.users.Default;
 import com.agri.users.Supervisor;
 import com.agri.users.SupervisorManager;
@@ -20,20 +21,23 @@ class AcceptedQuoteStatusTest {
         String council = "Inverclyde";
         int hectares = 500;
         int vph = 100;
+        User userBroker = new Broker();
+        User userSupervisor = new Supervisor();
+        User userSupManager = new SupervisorManager();
+        User userDefault = new Default();
        
        
 	@Test // Accepted Quote Exception Test
 	void acceptedQuoteExceptionTest() throws Exception {
 		
-        User user = new Supervisor();
         RiskData riskdata = new RiskData(crop, council, hectares, vph);
-        AgriQuote quote = AgriInsuranceFactory.createNewQuote(user , riskdata); 
+        AgriQuote quote = AgriInsuranceFactory.createNewQuote(userSupervisor , riskdata); 
         
         try {
         	
-	        quote.saveQuote(user);
-			quote.acceptQuote(user);
-		    quote.acceptQuote(user);
+	        quote.saveQuote(userSupervisor);
+			quote.acceptQuote(userSupervisor);
+		    quote.acceptQuote(userSupervisor);
 	    
         } catch (ActionException e) {
         	
@@ -48,13 +52,12 @@ class AcceptedQuoteStatusTest {
 		String actual; 
 		String expected;
         
-		User user = new Supervisor();
 		RiskData riskdata = new RiskData(crop, council, hectares, vph);
-        AgriQuote quote = AgriInsuranceFactory.createNewQuote(user , riskdata);
+        AgriQuote quote = AgriInsuranceFactory.createNewQuote(userSupervisor , riskdata);
         
-        quote.saveQuote(user);
-        quote.acceptQuote(user);
-        quote.declineQuote(user);
+        quote.saveQuote(userSupervisor);
+        quote.acceptQuote(userSupervisor);
+        quote.declineQuote(userSupervisor);
         actual = quote.getStatus().toString();
         expected = "DeclinedQuoteStatus";
         assertTrue(actual.contains(expected));
@@ -63,15 +66,14 @@ class AcceptedQuoteStatusTest {
 	@Test // Save Quote Exception Test
 	void saveQuoteExceptionTest() throws Exception {
 			
-	     User user = new Supervisor();
 	     RiskData riskdata = new RiskData(crop, council, hectares, vph);
-	     AgriQuote quote = AgriInsuranceFactory.createNewQuote(user , riskdata); 
+	     AgriQuote quote = AgriInsuranceFactory.createNewQuote(userSupervisor , riskdata); 
 	        
 	        try {
 	        	
-		        quote.saveQuote(user);
-				quote.acceptQuote(user);
-			    quote.saveQuote(user);
+		        quote.saveQuote(userSupervisor);
+				quote.acceptQuote(userSupervisor);
+			    quote.saveQuote(userSupervisor);
 			    
 	        } catch (ActionException e) {
 	        	
@@ -83,15 +85,14 @@ class AcceptedQuoteStatusTest {
 	@Test // Refer Quote Exception Test 
 	void referQuoteExceptionTest() throws Exception {
 		
-		User user = new Supervisor();
 		RiskData riskdata = new RiskData(crop, council, hectares, vph);
-	    AgriQuote quote = AgriInsuranceFactory.createNewQuote(user , riskdata); 
+	    AgriQuote quote = AgriInsuranceFactory.createNewQuote(userSupervisor , riskdata); 
 	    
 	    try {
         	
-		        quote.saveQuote(user);
-				quote.acceptQuote(user);
-			    quote.referQuote(user);
+		        quote.saveQuote(userSupervisor);
+				quote.acceptQuote(userSupervisor);
+			    quote.referQuote(userSupervisor);
 		    
 	        } catch (ActionException e) {
 	        	
@@ -103,15 +104,13 @@ class AcceptedQuoteStatusTest {
 	@Test //user with wrong permission level
 	void wrongPermissionLevelTest() throws Exception {
 		
-		User user = new SupervisorManager();
 		RiskData riskdata = new RiskData(crop, council, hectares, vph);
-		AgriQuote quote = AgriInsuranceFactory.createNewQuote(user, riskdata);
+		AgriQuote quote = AgriInsuranceFactory.createNewQuote(userSupManager, riskdata);
 		
 		try {
 		
-			quote.saveQuote(user);
-			quote.acceptQuote(user);
-			User userDefault = new Default();
+			quote.saveQuote(userSupManager);
+			quote.acceptQuote(userSupManager);
 			quote.declineQuote(userDefault);
 			
 		} catch (PermissionException e) {
