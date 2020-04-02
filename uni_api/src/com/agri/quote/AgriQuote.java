@@ -24,7 +24,7 @@ public abstract class AgriQuote {
 		this.currentStatus = new PendingQuoteStatus(this);// set current status to pending
 		this.makeQuote();
 	}
-	
+	// setters and getters for variables
 	public RiskData getRiskdata() {
 		return riskdata;
 	}
@@ -64,7 +64,7 @@ public abstract class AgriQuote {
 	public QuoteStatus getStatus() {
 		return currentStatus;
 	}
-
+	// available actions on AgriQuote to effect status
 	public void acceptQuote(User user) throws Exception {
 		currentStatus.acceptQuote(user);
 	}
@@ -77,7 +77,7 @@ public abstract class AgriQuote {
 	public void referQuote(User user) throws Exception {
 		currentStatus.referQuote(user);
 	}
-	
+	// getters for each status
 	public QuoteStatus getAcceptedState() {
 		return new AcceptedQuoteStatus(this);
 	}

@@ -7,24 +7,24 @@ import com.agri.business.RiskData;
 public class RaspberryQte extends AgriQuote {
 
 	public RaspberryQte(RiskData riskdata) {
+		//setting risk data for the quote
 		super(riskdata);
 	}
 	
 	private double calculatePrice () {
-		premium = RatingEngine.getPremium(riskdata.crop, sumInsured);
+		setPremium(RatingEngine.getPremium(riskdata.crop, sumInsured));
 		return premium;
 	}
 	
 	private double calculateSI () {
-		sumInsured = riskdata.hectares * riskdata.vph;
+		setSumInsured(riskdata.hectares * riskdata.vph);
 		return sumInsured;
 	}
-
+	// overriden method to generate quote 
 	@Override
 	public void makeQuote() {
 		calculateSI();
 		calculatePrice();
-		QteNumberGenerator.getQteNumber();
+		setQteNumber(QteNumberGenerator.getQteNumber());
 	}
-
 }
