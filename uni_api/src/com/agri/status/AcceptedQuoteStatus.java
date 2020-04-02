@@ -8,6 +8,8 @@ import com.agri.users.User;
 
 public class AcceptedQuoteStatus implements QuoteStatus {
 	
+	// class for accepted quote status, determines what each action can do on quote
+	
 	AgriQuote quote;
 	
 	public AcceptedQuoteStatus(AgriQuote quote) {

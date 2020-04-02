@@ -6,6 +6,8 @@ import com.agri.users.User;
 
 public class PendingQuoteStatus implements QuoteStatus {
 	
+	// class for pending quote status, determines what each action can do on quote
+	
 AgriQuote quote;
 	
 	public PendingQuoteStatus(AgriQuote quote) {

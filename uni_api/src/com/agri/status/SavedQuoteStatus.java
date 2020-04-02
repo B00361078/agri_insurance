@@ -6,6 +6,8 @@ import com.agri.quote.AgriQuote;
 import com.agri.users.User;
 
 public class SavedQuoteStatus implements QuoteStatus {
+	
+	// class for saved quote status, determines what each action can do on quote
 
 AgriQuote quote;
 	

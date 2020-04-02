@@ -6,6 +6,8 @@ public class RatingEngine {
 
 	public static double getPremium(String crop, int SI) {
 		
+		// rating engine will take the sum insured and apply fixed rate depening on type of crop
+		
 		DecimalFormat decimal = new DecimalFormat("########0.00");
 		
 		double calc;

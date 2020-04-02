@@ -5,6 +5,8 @@ import java.util.List;
 
 
 public class Zones {
+	
+	// list of each zone with available councils, check which zone the council is in
 
 	private final static String [] zone1 = {"Inverclyde", "Renfrewshire", "West Dunbartonshire",  "East Dunbartonshire", 
 			"Glasgow", "East Renfrewshire", "North Lanarkshire", "Falkirk", "West Lothian", "Edinburgh", 

@@ -7,6 +7,8 @@ import com.agri.users.User;
 
 public class ReferredQuoteStatus implements QuoteStatus {
 	
+	// class for referred quote status, determines what each action can do on quote
+	
 AgriQuote quote;
 	
 	public ReferredQuoteStatus(AgriQuote quote) {

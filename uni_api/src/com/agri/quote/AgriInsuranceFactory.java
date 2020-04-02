@@ -8,6 +8,8 @@ import com.agri.users.User;
 
 public class AgriInsuranceFactory {
 	
+	// factory method for returning types of Agri quote
+	
 	public static AgriQuote createNewQuote(User user, RiskData riskdata) throws PermissionException, InvalidDataException {
 		DataChecker check = new DataChecker(riskdata);
 		check.getDataValid(); //checking RiskData is valid before quoting

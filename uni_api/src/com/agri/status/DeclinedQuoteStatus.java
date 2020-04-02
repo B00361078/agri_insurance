@@ -7,6 +7,8 @@ import com.agri.users.User;
 
 public class DeclinedQuoteStatus implements QuoteStatus {
 	
+	// class for declined quote status, determines what each action can do on quote
+	
 	AgriQuote quote;
 	
 	public DeclinedQuoteStatus(AgriQuote quote) {
