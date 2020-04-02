@@ -11,7 +11,6 @@ import com.agri.exceptions.InvalidDataException;
 import com.agri.exceptions.PermissionException;
 import com.agri.quote.AgriInsuranceFactory;
 import com.agri.quote.AgriQuote;
-import com.agri.quote.BarleyQte;
 import com.agri.users.Broker;
 import com.agri.users.Default;
 import com.agri.users.User;
@@ -107,6 +106,7 @@ class AgriInsuranceFactoryTest {
 	@Test
 	//user without correct permissions creating a quote
 	void invalidUserTest() throws Exception {
+		new AgriInsuranceFactory();
 		String crop = "Barley";
 		String expected = "you do not have permission to quote";
 		User user = new Default();

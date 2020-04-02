@@ -15,6 +15,7 @@ class ZonesTest {
 	@Test
 	//Check council is in Zone 1
 	void zone1Test() {
+		new Zones();
 		council = "Glasgow";
 		expected = "Zone1";
 		
