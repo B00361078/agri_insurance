@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import com.agri.business.RiskData;
 import com.agri.exceptions.ActionException;
+import com.agri.exceptions.InvalidDataException;
 import com.agri.exceptions.PermissionException;
 import com.agri.quote.AgriInsuranceFactory;
 import com.agri.quote.AgriQuote;
@@ -25,18 +26,25 @@ class AcceptedQuoteStatusTest {
         User userSupervisor = new Supervisor();
         User userSupManager = new SupervisorManager();
         User userDefault = new Default();
+        RiskData riskdata = new RiskData(crop, council, hectares, vph);
+        AgriQuote quote;
+    
+    // set up quote and change to accepted quote status
+    void setUpQuote() throws Exception {
+    	AgriQuote quote = AgriInsuranceFactory.createNewQuote(userBroker, riskdata);
+    	this.quote = quote;
+    	quote.saveQuote(userBroker);
+    	quote.acceptQuote(userSupervisor);
+    }
        
        
 	@Test // Accepted Quote Exception Test
 	void acceptedQuoteExceptionTest() throws Exception {
 		
-        RiskData riskdata = new RiskData(crop, council, hectares, vph);
-        AgriQuote quote = AgriInsuranceFactory.createNewQuote(userSupervisor , riskdata); 
+		setUpQuote();
         
         try {
         	
-	        quote.saveQuote(userSupervisor);
-			quote.acceptQuote(userSupervisor);
 		    quote.acceptQuote(userSupervisor);
 	    
         } catch (ActionException e) {
@@ -49,14 +57,11 @@ class AcceptedQuoteStatusTest {
 	@Test // Decline Quote Test
 	void declinedQuoteTest() throws Exception {
 		
+		setUpQuote();
+		
 		String actual; 
 		String expected;
-        
-		RiskData riskdata = new RiskData(crop, council, hectares, vph);
-        AgriQuote quote = AgriInsuranceFactory.createNewQuote(userSupervisor , riskdata);
-        
-        quote.saveQuote(userSupervisor);
-        quote.acceptQuote(userSupervisor);
+      
         quote.declineQuote(userSupervisor);
         actual = quote.getStatus().toString();
         expected = "DeclinedQuoteStatus";
@@ -65,14 +70,11 @@ class AcceptedQuoteStatusTest {
 	
 	@Test // Save Quote Exception Test
 	void saveQuoteExceptionTest() throws Exception {
+		
+		setUpQuote();
 			
-	     RiskData riskdata = new RiskData(crop, council, hectares, vph);
-	     AgriQuote quote = AgriInsuranceFactory.createNewQuote(userSupervisor , riskdata); 
-	        
 	        try {
 	        	
-		        quote.saveQuote(userSupervisor);
-				quote.acceptQuote(userSupervisor);
 			    quote.saveQuote(userSupervisor);
 			    
 	        } catch (ActionException e) {
@@ -85,13 +87,10 @@ class AcceptedQuoteStatusTest {
 	@Test // Refer Quote Exception Test 
 	void referQuoteExceptionTest() throws Exception {
 		
-		RiskData riskdata = new RiskData(crop, council, hectares, vph);
-	    AgriQuote quote = AgriInsuranceFactory.createNewQuote(userSupervisor , riskdata); 
+		setUpQuote();
 	    
 	    try {
         	
-		        quote.saveQuote(userSupervisor);
-				quote.acceptQuote(userSupervisor);
 			    quote.referQuote(userSupervisor);
 		    
 	        } catch (ActionException e) {
@@ -104,13 +103,10 @@ class AcceptedQuoteStatusTest {
 	@Test //user with wrong permission level
 	void wrongPermissionLevelTest() throws Exception {
 		
-		RiskData riskdata = new RiskData(crop, council, hectares, vph);
-		AgriQuote quote = AgriInsuranceFactory.createNewQuote(userSupManager, riskdata);
+		setUpQuote();
 		
 		try {
 		
-			quote.saveQuote(userSupManager);
-			quote.acceptQuote(userSupManager);
 			quote.declineQuote(userDefault);
 			
 		} catch (PermissionException e) {
