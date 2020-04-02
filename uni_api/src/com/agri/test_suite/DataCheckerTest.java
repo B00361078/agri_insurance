@@ -18,8 +18,8 @@ class DataCheckerTest {
 		
 		
 		try {
-		DataChecker data = new DataChecker(riskdata);
-		data.checkZone();
+			DataChecker data = new DataChecker(riskdata);
+			data.checkZone();
 		} catch (InvalidDataException e) {
 			String actual = e.getMessage();
 			assertEquals(actual, expected);

@@ -13,6 +13,8 @@ class QteNumberGeneratorTest {
 	void checkQTETest() {
 		Boolean expected = true;
 		
+		new QteNumberGenerator();
+		
 		String quoteNumber = QteNumberGenerator.getQteNumber();
 		String sequence = quoteNumber.substring(0, 3);
 		Boolean actual = sequence.equalsIgnoreCase("QTE");

@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import com.agri.permissions.PermissionsManager;
 
 class PermissionsManagerTest {
+	
 
 	@Test
 	//get broker permission level
@@ -55,6 +56,7 @@ class PermissionsManagerTest {
 	@Test
 	//get default permission level
 	void defaultTest() {
+		new PermissionsManager();
 		String role = "default";
 		int expected = 0;
 		
