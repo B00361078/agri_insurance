@@ -25,12 +25,19 @@ class PendingQuoteStatusTest {
     User userSupervisor = new Supervisor();
     User userSupManager = new SupervisorManager();
     User userDefault = new Default();
+    RiskData riskdata = new RiskData(crop, council, hectares, vph);
+    AgriQuote quote;
+    
+    // set up quote and leave in pending status
+    void setUpQuote() throws Exception {
+    	AgriQuote quote = AgriInsuranceFactory.createNewQuote(userBroker, riskdata);
+    	this.quote = quote;
+    }
    
 	@Test //Accept Quote Exception Test
 	void acceptQuoteTest() throws Exception {
 		
-	    RiskData riskdata = new RiskData(crop, council, hectares, vph);
-	    AgriQuote quote = AgriInsuranceFactory.createNewQuote(userBroker , riskdata); 
+	    setUpQuote();
 	       
 	    try {        	
 	    	quote.acceptQuote(userBroker);
@@ -45,8 +52,7 @@ class PendingQuoteStatusTest {
 	@Test //Decline Quote Exception Test
 	void declineQuoteTest() throws Exception {
 		
-		RiskData riskdata = new RiskData(crop, council, hectares, vph);
-	    AgriQuote quote = AgriInsuranceFactory.createNewQuote(userSupervisor , riskdata); 
+		setUpQuote();
 	    
 	    try {        	
 	    	quote.declineQuote(userSupervisor);
@@ -61,8 +67,7 @@ class PendingQuoteStatusTest {
 	@Test //Permission Save Quote Test
 	void permSaveQuoteTest() throws Exception {
 		
-		RiskData riskdata = new RiskData(crop, council, hectares, vph);
-	    AgriQuote quote = AgriInsuranceFactory.createNewQuote(userBroker , riskdata); 
+		setUpQuote();
 	    
 	    try {
 	    	quote.saveQuote(userDefault);
@@ -76,8 +81,7 @@ class PendingQuoteStatusTest {
 	@Test //Refer Quote Exception Test
 	void referQuoteTest() throws Exception {
 		
-		RiskData riskdata = new RiskData(crop, council, hectares, vph);
-	    AgriQuote quote = AgriInsuranceFactory.createNewQuote(userBroker , riskdata); 
+		setUpQuote();
 	    
 	    try {
 	    	quote.referQuote(userBroker);
@@ -92,16 +96,15 @@ class PendingQuoteStatusTest {
 	@Test //Save Quote Status Test
 	void saveQuoteTest() throws Exception {
 		
-		RiskData riskdata = new RiskData(crop, council, hectares, vph);
-	    AgriQuote quote = AgriInsuranceFactory.createNewQuote(userBroker , riskdata);
+		setUpQuote();
+		
 	    quote.saveQuote(userBroker);
 	    String actual = quote.getStatus().toString();
     	String expected = "SavedQuoteStatus";
     	assertTrue(actual.contains(expected));
 	    
 	}
-		
-		
+	
 }
 
 

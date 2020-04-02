@@ -21,24 +21,30 @@ class ReferredQuoteStatusTest {
     String council = "Inverclyde";
     int hectares = 500;
     int vph = 100;
-    
     User userBroker = new Broker();
     User userSupervisor = new Supervisor();
     User userSupManager = new SupervisorManager();
     User userDefault = new Default();
+    RiskData riskdata = new RiskData(crop, council, hectares, vph);
+    AgriQuote quote;
+    
+    // set up quote and change to referred quote status
+    void setUpQuote() throws Exception {
+    	AgriQuote quote = AgriInsuranceFactory.createNewQuote(userBroker, riskdata);
+    	this.quote = quote;
+    	quote.saveQuote(userBroker);
+    	quote.referQuote(userSupervisor);
+    }
 
 
 	@Test //Accept Quote Status Test 
 	void acceptQuoteTest() throws Exception {
 		
+		setUpQuote();
+		
 		String actual; 
 		String expected;
-        
-		RiskData riskdata = new RiskData(crop, council, hectares, vph);
-        AgriQuote quote = AgriInsuranceFactory.createNewQuote(userSupervisor , riskdata);
-        
-        quote.saveQuote(userSupervisor);
-        quote.referQuote(userSupervisor);
+       
         quote.acceptQuote(userSupManager);
         actual = quote.getStatus().toString();
         expected = "AcceptedQuoteStatus";
@@ -48,14 +54,11 @@ class ReferredQuoteStatusTest {
 	@Test //Decline Quote Status Test
 	void declineQuoteTest() throws Exception {
 		
+		setUpQuote();
+		
 		String actual; 
 		String expected;
-        
-		RiskData riskdata = new RiskData(crop, council, hectares, vph);
-        AgriQuote quote = AgriInsuranceFactory.createNewQuote(userSupervisor , riskdata);
-        
-       	quote.saveQuote(userSupervisor);
-       	quote.referQuote(userSupervisor);
+       
        	quote.declineQuote(userSupManager);
        	actual = quote.getStatus().toString();
        	expected = "DeclinedQuoteStatus";
@@ -65,13 +68,10 @@ class ReferredQuoteStatusTest {
 	@Test //Save Quote Exception Test
 	void saveQuoteExceptionTest() throws Exception {
 
-		RiskData riskdata = new RiskData(crop, council, hectares, vph);
-		AgriQuote quote = AgriInsuranceFactory.createNewQuote(userSupervisor, riskdata);
+		setUpQuote();
 		
 		try {
 			
-			quote.saveQuote(userSupervisor);
-			quote.referQuote(userSupervisor);
 			quote.saveQuote(userSupervisor);
 			
 		} catch (ActionException e) {
@@ -84,13 +84,10 @@ class ReferredQuoteStatusTest {
 	@Test //Refer Quote Exception Test
 	void referQuoteEceptionTest() throws Exception {
 		
-		RiskData riskdata = new RiskData(crop, council, hectares, vph);
-		AgriQuote quote = AgriInsuranceFactory.createNewQuote(userSupManager, riskdata);
+		setUpQuote();
 		
 		try {
 			
-			quote.saveQuote(userSupervisor);
-			quote.referQuote(userSupervisor);
 			quote.referQuote(userSupervisor);
 
 		} catch (ActionException e) {
@@ -103,13 +100,10 @@ class ReferredQuoteStatusTest {
 	@Test //Permission Accept Quote Exception Test 
 	void permAcceptQuoteTest() throws Exception {
 		
-		RiskData riskdata = new RiskData(crop, council, hectares, vph);
-		AgriQuote quote = AgriInsuranceFactory.createNewQuote(userSupervisor, riskdata);
+		setUpQuote();
 		
 		try {
 			
-			quote.saveQuote(userSupervisor);
-			quote.referQuote(userSupervisor);
 			quote.acceptQuote(userBroker);
 			
 		} catch (PermissionException e) {
@@ -122,13 +116,10 @@ class ReferredQuoteStatusTest {
 	@Test //Permission Decline Quote Exception Test 
 	void permDeclineQuoteTest() throws Exception {
 		
-		RiskData riskdata = new RiskData(crop, council, hectares, vph);
-		AgriQuote quote = AgriInsuranceFactory.createNewQuote(userSupervisor, riskdata);
+		setUpQuote();
 		
 		try { 
 			
-			quote.saveQuote(userSupervisor);
-			quote.referQuote(userSupervisor);
 			quote.declineQuote(userBroker);
 			
 		} catch (PermissionException e) {
