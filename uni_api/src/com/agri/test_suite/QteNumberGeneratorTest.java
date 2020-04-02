@@ -8,9 +8,9 @@ import com.agri.business.QteNumberGenerator;
 
 class QteNumberGeneratorTest {
 
-	@Test
-	//every quote number should contain QTE at the start
+	@Test //every quote number should contain QTE at the start
 	void checkQTETest() {
+		
 		Boolean expected = true;
 		
 		new QteNumberGenerator();
@@ -22,9 +22,9 @@ class QteNumberGeneratorTest {
 		assertEquals(expected, actual);
 	}
 	
-	@Test
-	//every quote number should contain 5 numbers after QTE
+	@Test //every quote number should contain 5 numbers after QTE
 	void checkNumberTest() {
+		
 		Boolean expected = true;
 		Boolean actual = false;
 		

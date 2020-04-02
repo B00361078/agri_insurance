@@ -21,7 +21,7 @@ class SavedQuoteStatusTest {
 	    int hectares = 500;
 	    int vph = 100;
 	
-	@Test  // Supervisor Accept Quote Test 
+	@Test  //Accept Quote Test 
 	void acceptQuoteTest() throws Exception {
 		
 		String actual; 
@@ -38,7 +38,7 @@ class SavedQuoteStatusTest {
         assertTrue(actual.contains(expected));
 	}
 	
-	@Test  // Decline Quote Test 
+	@Test  //Decline Quote Test 
 	void declineQuoteTest() throws Exception {
 		
 		String actual;
@@ -55,7 +55,7 @@ class SavedQuoteStatusTest {
     	assertTrue(actual.contains(expected));
 	}
 	
-	@Test // Save Quote Exception Test 
+	@Test //Save Quote Exception Test 
 	void saveQuoteExceptionTest() throws Exception {
 		
 		User user = new Supervisor();
@@ -74,7 +74,7 @@ class SavedQuoteStatusTest {
 		}
 	}
 		
-		@Test  // Refer Quote Test 
+		@Test  //Refer Quote Test 
 		void referQuoteTest() throws Exception {
 			
 			User user = new Supervisor();
@@ -90,7 +90,7 @@ class SavedQuoteStatusTest {
 		    
 		}	
 		
-		@Test  // accept quote with wrong permission level
+		@Test  //accept quote with wrong permission level
 		void acceptWrongPermissionTest() throws Exception {
 			
 			User user = new SupervisorManager();
@@ -110,7 +110,7 @@ class SavedQuoteStatusTest {
 			}	
 		}
 		
-		@Test  // decline quote with wrong permission level
+		@Test  //decline quote with wrong permission level
 		void declineWrongPermissionTest() throws Exception {
 			
 			User user = new SupervisorManager();
@@ -130,7 +130,7 @@ class SavedQuoteStatusTest {
 			}	
 		}
 		
-		@Test  // refer quote with wrong permission level
+		@Test  //refer quote with wrong permission level
 		void referWrongPermissionTest() throws Exception {
 			
 			User user = new SupervisorManager();
@@ -149,6 +149,5 @@ class SavedQuoteStatusTest {
 			}	
 		}
 			
-	
-	}
+}
 		

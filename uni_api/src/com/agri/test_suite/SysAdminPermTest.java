@@ -6,9 +6,9 @@ import com.agri.users.SysAdmin;
 
 class SysAdminPermTest {
 
-	@Test
-	//Check System Admin Permission Level
+	@Test //Check System Admin Permission Level
 	void sysAdminPermissiontest() {
+		
 		int expected = 4;
 		
 		int actual = new SysAdmin().getPermissionsLevel();

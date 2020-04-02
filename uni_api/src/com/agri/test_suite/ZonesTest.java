@@ -12,9 +12,9 @@ class ZonesTest {
 	String actual;
 	String expected;
 	
-	@Test
-	//Check council is in Zone 1
+	@Test //Check council is in Zone 1
 	void zone1Test() {
+		
 		new Zones();
 		council = "Glasgow";
 		expected = "Zone1";
@@ -24,9 +24,9 @@ class ZonesTest {
 		assertEquals(expected, actual);
 	}
 	
-	@Test
-	//Check council is in Zone 2
+	@Test //Check council is in Zone 2
 	void zone2Test() {
+		
 		council = "Scottish Borders";
 		expected = "Zone2";
 		
@@ -35,9 +35,9 @@ class ZonesTest {
 		assertEquals(expected, actual);
 	}
 	
-	@Test
-	//Check council is in Zone 3
+	@Test //Check council is in Zone 3
 	void zone3Test() {
+		
 		council = "Shetland";
 		expected = "Zone3";
 				
@@ -46,9 +46,9 @@ class ZonesTest {
 		assertEquals(expected, actual);
 	}
 	
-	@Test
-	//Check if council does not exist returns null
+	@Test //Check if council does not exist returns null
 	void noZoneTest( ) {
+		
 		council = "Spain";
 		expected = null;
 		
