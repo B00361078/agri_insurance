@@ -8,8 +8,7 @@ import com.agri.users.Default;
 
 class DefaultTest {
 
-	@Test
-	//get default Permission Level
+	@Test //get default user Permission Level
 	void DefaultPermissiontest() {
 		int expected = 0;
 		

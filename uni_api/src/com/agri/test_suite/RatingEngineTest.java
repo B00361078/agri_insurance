@@ -8,9 +8,9 @@ import com.agri.business.RatingEngine;
 
 class RatingEngineTest {
 
-	@Test
-	//get premium for Barley (whole number SI)
+	@Test //get premium for Barley (whole number SI)
 	void barleyPremiumtest1() {
+		
 		String crop = "Barley";
 		int SI = 211;
 		new RatingEngine();
@@ -19,9 +19,9 @@ class RatingEngineTest {
 		assertEquals(expected, actual);
 	}
 	
-	@Test
-	//get premium for Barley (decimal SI)
+	@Test //get premium for Barley (decimal SI)
 	void barleyPremiumTest2() {
+		
 		String crop = "Barley";
 		int SI = (int) 158.5;
 		new RatingEngine();
@@ -30,9 +30,9 @@ class RatingEngineTest {
 		assertEquals(expected, actual);
 	}
 	
-	@Test
-	//get premium for Strawberries (whole number SI)
+	@Test //get premium for Strawberries (whole number SI)
 	void strawberryPremiumTest1() {
+		
 		String crop = "Strawberries";
 		int SI = 500;
 		new RatingEngine();
@@ -41,9 +41,9 @@ class RatingEngineTest {
 		assertEquals(expected, actual);
 	}
 	
-	@Test
-	//get premium for Strawberries (decimal SI)
+	@Test //get premium for Strawberries (decimal SI)
 	void strawberryPremiumTest2() {
+		
 		String crop = "Strawberries";
 		int SI = (int) 650.7;
 		new RatingEngine();
@@ -52,9 +52,9 @@ class RatingEngineTest {
 		assertEquals(expected, actual);
 	}
 	
-	@Test
-	//get premium for Raspberry (whole number SI)
+	@Test //get premium for Raspberry (whole number SI)
 	void raspberryPremiumTest1() {
+		
 		String crop = "Raspberries";
 		int SI = 600;
 		new RatingEngine();
@@ -63,9 +63,9 @@ class RatingEngineTest {
 		assertEquals(expected, actual);
 	}
 	
-	@Test
-	//get premium for Raspberry (decimal SI)
+	@Test //get premium for Raspberry (decimal SI)
 	void raspberryPremiumTest2() {
+		
 		String crop = "Raspberries";
 		int SI = (int) 437.68;
 		new RatingEngine();
@@ -74,9 +74,9 @@ class RatingEngineTest {
 		assertEquals(expected, actual);
 	}
 	
-	@Test
-	//get premium for Winter Wheat (whole number SI)
+	@Test //get premium for Winter Wheat (whole number SI)
 	void wheatPremiumTest1() {
+		
 		String crop = "WinterWheat";
 		int SI = 850;
 		new RatingEngine();
@@ -85,9 +85,9 @@ class RatingEngineTest {
 		assertEquals(expected, actual);
 	}
 	
-	@Test
-	//get premium for Winter Wheat (decimal SI)
+	@Test //get premium for Winter Wheat (decimal SI)
 	void wheatPremiumTest2() {
+		
 		String crop = "WinterWheat";
 		int SI = (int) 1036.23;
 		new RatingEngine();
@@ -96,9 +96,9 @@ class RatingEngineTest {
 		assertEquals(expected, actual);
 	}
 	
-	@Test
-	//get premium for crop not covered
+	@Test //get premium for crop not covered
 	void unknownCropTest() {
+		
 		String crop = "Unknown";
 		int SI = 500;
 		new RatingEngine();
@@ -106,4 +106,5 @@ class RatingEngineTest {
 		double expected = 0.00;
 		assertEquals(expected, actual);
 	}
+	
 }

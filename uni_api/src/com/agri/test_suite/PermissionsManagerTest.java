@@ -9,9 +9,9 @@ import com.agri.permissions.PermissionsManager;
 class PermissionsManagerTest {
 	
 
-	@Test
-	//get broker permission level
+	@Test //get broker permission level
 	void brokerTest() {
+		
 		String role = "Broker";
 		int expected = 1;
 		
@@ -20,9 +20,9 @@ class PermissionsManagerTest {
 		assertEquals(expected, actual);
 	}
 	
-	@Test
-	//get supervisor permission level
+	@Test //get supervisor permission level
 	void supervisorTest() {
+		
 		String role = "Supervisor";
 		int expected = 2;
 		
@@ -31,9 +31,9 @@ class PermissionsManagerTest {
 		assertEquals(expected, actual);
 	}
 	
-	@Test
-	//get Supervisor Manager permission level
+	@Test //get Supervisor Manager permission level
 	void supManagerTest() {
+		
 		String role = "SupManager";
 		int expected = 3;
 		
@@ -42,9 +42,9 @@ class PermissionsManagerTest {
 		assertEquals(expected, actual);
 	}
 	
-	@Test
-	//get Sys Admin permission level
+	@Test //get Sys Admin permission level
 	void sysAdminTest() {
+		
 		String role = "SysAdmin";
 		int expected = 4;
 		
@@ -53,9 +53,9 @@ class PermissionsManagerTest {
 		assertEquals(expected, actual);
 	}
 	
-	@Test
-	//get default permission level
+	@Test //get default permission level
 	void defaultTest() {
+		
 		new PermissionsManager();
 		String role = "default";
 		int expected = 0;

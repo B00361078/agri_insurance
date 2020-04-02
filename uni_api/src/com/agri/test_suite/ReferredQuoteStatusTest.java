@@ -37,15 +37,15 @@ class ReferredQuoteStatusTest {
 		RiskData riskdata = new RiskData(crop, council, hectares, vph);
         AgriQuote quote = AgriInsuranceFactory.createNewQuote(userSupervisor , riskdata);
         
-        	quote.saveQuote(userSupervisor);
-        	quote.referQuote(userSupervisor);
-        	quote.acceptQuote(userSupManager);
-        	actual = quote.getStatus().toString();
-        	expected = "AcceptedQuoteStatus";
-        	assertTrue(actual.contains(expected));
+        quote.saveQuote(userSupervisor);
+        quote.referQuote(userSupervisor);
+        quote.acceptQuote(userSupManager);
+        actual = quote.getStatus().toString();
+        expected = "AcceptedQuoteStatus";
+        assertTrue(actual.contains(expected));
 	}
 	
-	@Test //Decline Quote Exception Test
+	@Test //Decline Quote Status Test
 	void declineQuoteTest() throws Exception {
 		
 		String actual; 
@@ -54,89 +54,89 @@ class ReferredQuoteStatusTest {
 		RiskData riskdata = new RiskData(crop, council, hectares, vph);
         AgriQuote quote = AgriInsuranceFactory.createNewQuote(userSupervisor , riskdata);
         
-        	quote.saveQuote(userSupervisor);
-        	quote.referQuote(userSupervisor);
-        	quote.declineQuote(userSupManager);
-        	actual = quote.getStatus().toString();
-        	expected = "DeclinedQuoteStatus";
-        	assertTrue(actual.contains(expected));
+       	quote.saveQuote(userSupervisor);
+       	quote.referQuote(userSupervisor);
+       	quote.declineQuote(userSupManager);
+       	actual = quote.getStatus().toString();
+       	expected = "DeclinedQuoteStatus";
+       	assertTrue(actual.contains(expected));
 	}
 	
 	@Test //Save Quote Exception Test
-	void saveQuoteTest() throws Exception {
+	void saveQuoteExceptionTest() throws Exception {
 
 		RiskData riskdata = new RiskData(crop, council, hectares, vph);
 		AgriQuote quote = AgriInsuranceFactory.createNewQuote(userSupervisor, riskdata);
 		
 		try {
+			
 			quote.saveQuote(userSupervisor);
 			quote.referQuote(userSupervisor);
 			quote.saveQuote(userSupervisor);
-		}
-		
-		catch(ActionException e) {
-			assertEquals(e.getMessage(), ("your quote is already saved"));
-		}
 			
+		} catch (ActionException e) {
+			
+			assertEquals(e.getMessage(), ("your quote is already saved"));
+			
+		}	
 	}
 	
 	@Test //Refer Quote Exception Test
-	void referQuoteTest() throws Exception {
+	void referQuoteEceptionTest() throws Exception {
 		
 		RiskData riskdata = new RiskData(crop, council, hectares, vph);
 		AgriQuote quote = AgriInsuranceFactory.createNewQuote(userSupManager, riskdata);
 		
 		try {
+			
 			quote.saveQuote(userSupervisor);
 			quote.referQuote(userSupervisor);
 			quote.referQuote(userSupervisor);
 
-		}
-		
-		catch(ActionException e) {
+		} catch (ActionException e) {
+			
 			assertEquals(e.getMessage(), ("your quote is already referred"));
+			
 		}
-		
 	}
 	
-	@Test //Permission Accept Quote Test 
+	@Test //Permission Accept Quote Exception Test 
 	void permAcceptQuoteTest() throws Exception {
 		
 		RiskData riskdata = new RiskData(crop, council, hectares, vph);
 		AgriQuote quote = AgriInsuranceFactory.createNewQuote(userSupervisor, riskdata);
 		
 		try {
+			
 			quote.saveQuote(userSupervisor);
 			quote.referQuote(userSupervisor);
 			quote.acceptQuote(userBroker);
-		}
-		
-		catch(PermissionException e) {
+			
+		} catch (PermissionException e) {
+			
 			assertEquals(e.getMessage(), ("you do not have permission to perform that action"));
+			
 		}
-		
 	}
 	
-	@Test //Permission Decline Quote Test 
+	@Test //Permission Decline Quote Exception Test 
 	void permDeclineQuoteTest() throws Exception {
 		
 		RiskData riskdata = new RiskData(crop, council, hectares, vph);
 		AgriQuote quote = AgriInsuranceFactory.createNewQuote(userSupervisor, riskdata);
 		
 		try { 
+			
 			quote.saveQuote(userSupervisor);
 			quote.referQuote(userSupervisor);
 			quote.declineQuote(userBroker);
-		}
-		
-		catch(PermissionException e) { 
+			
+		} catch (PermissionException e) {
+			
 			assertEquals(e.getMessage(), ("you do not have permission to perform that action"));
+			
 		}
 
 	}
-	
-
-	
-	
 	
 }

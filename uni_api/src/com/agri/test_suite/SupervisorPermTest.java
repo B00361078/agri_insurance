@@ -6,9 +6,9 @@ import com.agri.users.Supervisor;
 
 class SupervisorPermTest {
 
-	@Test
-	//check Supervisor Permission Level
+	@Test //check Supervisor Permission Level
 	void supervisorPermissiontest() {
+		
 		int expected = 2;
 		
 		int actual = new Supervisor().getPermissionsLevel();

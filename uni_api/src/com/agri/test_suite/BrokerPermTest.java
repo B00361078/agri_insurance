@@ -8,8 +8,7 @@ import com.agri.users.Broker;
 
 class BrokerPermTest {
 
-	@Test
-	//get Brokers Permission Level
+	@Test //check Brokers Permission Level
 	void BrokerPermissiontest() {
 		int expected = 1;
 		
