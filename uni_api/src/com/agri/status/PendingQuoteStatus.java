@@ -1,5 +1,6 @@
 package com.agri.status;
 
+import com.agri.exceptions.ActionException;
 import com.agri.exceptions.PermissionException;
 import com.agri.quote.AgriQuote;
 import com.agri.users.User;
@@ -13,15 +14,15 @@ AgriQuote quote;
 	public PendingQuoteStatus(AgriQuote quote) {
 		this.quote = quote;
 	}
-
+	
 	@Override
 	public void acceptQuote(User user) throws Exception {
-		throw new PermissionException("you must save the quote first");
+		throw new ActionException("you must save the quote first");
 	}
 
 	@Override
 	public void declineQuote(User user) throws Exception {
-		throw new PermissionException("you must save the quote first");	
+		throw new ActionException("you must save the quote first");	
 	}
 
 	@Override
@@ -34,7 +35,7 @@ AgriQuote quote;
 
 	@Override
 	public void referQuote(User user) throws Exception {
-		throw new PermissionException("you must save the quote first");	
+		throw new ActionException("you must save the quote first");	
 	}
 
 }
