@@ -20,17 +20,24 @@ class AgriInsuranceFactoryTest {
 	String council = "Inverclyde";
 	int hectares = 500;
 	int vph = 100;
+	AgriQuote quote;
+	User userBroker = new Broker();
+	
+	public void setUpQuote (String crop) throws PermissionException, InvalidDataException {
+		RiskData riskdata = new RiskData(crop, council, hectares, vph);
+		AgriQuote quote = AgriInsuranceFactory.createNewQuote(userBroker, riskdata);
+		this.quote = quote;
+	}
 		
 	@Test //barley quote generated check
 	void barleyQuoteTest() throws Exception {
 		
 		String crop = "Barley";
 		String expected = "BarleyQte";
-		User user = new Broker();
-		RiskData riskdata = new RiskData(crop, council, hectares, vph);
 		
-		AgriQuote newqte = AgriInsuranceFactory.createNewQuote(user , riskdata);
-		String actual = newqte.toString();
+		setUpQuote(crop);
+		
+		String actual = quote.toString();
 		
 		assertTrue(actual.contains(expected));
 	}
@@ -40,11 +47,10 @@ class AgriInsuranceFactoryTest {
 		
 		String crop = "Raspberries";
 		String expected = "RaspberryQte";
-		User user = new Broker();
-		RiskData riskdata = new RiskData(crop, council, hectares, vph);
 		
-		AgriQuote newqte = AgriInsuranceFactory.createNewQuote(user , riskdata);
-		String actual = newqte.toString();
+		setUpQuote(crop);
+		
+		String actual = quote.toString();
 		
 		assertTrue(actual.contains(expected));
 	}
@@ -54,11 +60,10 @@ class AgriInsuranceFactoryTest {
 		
 		String crop = "WinterWheat";
 		String expected = "WheatQte";
-		User user = new Broker();
-		RiskData riskdata = new RiskData(crop, council, hectares, vph);
 		
-		AgriQuote newqte = AgriInsuranceFactory.createNewQuote(user , riskdata);
-		String actual = newqte.toString();
+		setUpQuote(crop);
+		
+		String actual = quote.toString();
 		
 		assertTrue(actual.contains(expected));
 	}
@@ -68,11 +73,10 @@ class AgriInsuranceFactoryTest {
 		
 		String crop = "Strawberries";
 		String expected = "StrawberryQte";
-		User user = new Broker();
-		RiskData riskdata = new RiskData(crop, council, hectares, vph);
 		
-		AgriQuote newqte = AgriInsuranceFactory.createNewQuote(user , riskdata);
-		String actual = newqte.toString();
+		setUpQuote(crop);
+
+		String actual = quote.toString();
 		
 		assertTrue(actual.contains(expected));
 	}
@@ -82,13 +86,11 @@ class AgriInsuranceFactoryTest {
 		
 		String crop = "Sugarcane";
 		String expected = "invalid crop entered";
-		User user = new Broker();
 		
 		try {
 			
-			RiskData riskdata = new RiskData(crop, council, hectares, vph);
-			AgriInsuranceFactory.createNewQuote(user , riskdata);
-			
+			setUpQuote(crop);
+		
 		} catch (InvalidDataException e) {
 			
 			String actual = e.getMessage();
