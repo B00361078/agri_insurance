@@ -9,7 +9,7 @@ public class ReferredQuoteStatus implements QuoteStatus {
 	
 	// class for referred quote status, determines what each action can do on quote
 	
-AgriQuote quote;
+	AgriQuote quote;
 	
 	public ReferredQuoteStatus(AgriQuote quote) {
 		this.quote = quote;
